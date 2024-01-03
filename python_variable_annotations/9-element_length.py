@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+This module show a type-annotated function element_length
+"""
+
 
 from typing import Iterable, Sequence, List, Tuple
 
