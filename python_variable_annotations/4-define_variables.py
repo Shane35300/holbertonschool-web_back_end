@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+This module shows type-annotated variables
+"""
+
 
 a: int = 1
 pi: float = 3.14

@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+This module show a type-annotated function sum_list
+"""
+
 
 from typing import List
 
