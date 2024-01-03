@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
+"""
+this module create an async generator
+"""
+
+
 import random
 import asyncio
+
 
 async def async_generator():
     """ coroutine will loop 10 times, each time asynchronously
