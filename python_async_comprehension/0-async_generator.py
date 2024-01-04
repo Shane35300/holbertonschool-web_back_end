@@ -5,11 +5,11 @@ yields random floating-point numbers.
 """
 
 import asyncio
-from typing import Generator
+from typing import AsyncGenerator
 import random
 
 
-async def async_generator() -> Generator[float, None]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     Asynchronous generator that loops 10 times, with each iteration
     asynchronously
