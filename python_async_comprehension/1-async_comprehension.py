@@ -20,4 +20,4 @@ async def async_comprehension() -> List[float]:
     liste = []
     async for x in async_generator():
         liste.append(x)
-    return liste
+    return liste[:10]
