@@ -13,7 +13,7 @@ from typing import AsyncGenerator
 import random
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> AsyncGenerator[float, None, None]:
     """
     Asynchronous generator that loops 10 times, with each iteration
     asynchronously
