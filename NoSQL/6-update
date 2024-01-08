@@ -1,7 +1,6 @@
 // adds a new attribute to a document in the collection school
-db.school.updateMany(
-   { name: "Holberton school" },   // Condition : Mettre à jour le document avec le champ "name" égal à "Holberton school"
-   {
-      $set: { adress: "972 Mission street" }  // Mise à jour : Ajouter le champ "location" avec la valeur "New York"
-   }
+db.school.updateMany({ name: "Holberton school" },
+	{
+		$set: { address: "972 Mission street" }
+	}
 )
