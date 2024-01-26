@@ -6,5 +6,8 @@ export default function handleProfileSignup() {
     const crUs = results[1];
     const str = `${upPh.body} ${crUs.firstName} ${crUs.lastName}`;
     console.log(str);
-  });
+  })
+    .catch(() => {
+      console.log('Signup system offline');
+    });
 }
