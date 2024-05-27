@@ -20,4 +20,5 @@ class BasicCache(BaseCaching):
         """ return the value linked to key """
         if key is None:
             return None
-        return self.cache_data.get(key)
+        else:
+            return self.cache_data.get(key)
