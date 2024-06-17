@@ -8,14 +8,15 @@ import logging
 
 
 def filter_datum(fields: List[str], redaction: str,
-                    message: str, separator: str) -> str:
+                 message: str, separator: str) -> str:
     """
     The function should use a regex to replace occurrences of certain field
     values
     """
     pattern = '|'.join(f'{field}=[^ {separator}]+' for field in fields)
     return re.sub(pattern, lambda m: f'{m.group(0).split("=")[0]}={redaction}',
-                message)
+                  message)
+
 
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
@@ -31,5 +32,6 @@ class RedactingFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         original_message = super(RedactingFormatter, self).format(record)
-        obfuscated_message = filter_datum(self.fields, self.REDACTION, original_message, self.SEPARATOR)
+        obfuscated_message = filter_datum(self.fields, self.REDACTION,
+                                          original_message, self.SEPARATOR)
         return obfuscated_message
