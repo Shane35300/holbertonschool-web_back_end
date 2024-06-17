@@ -26,7 +26,7 @@ class RedactingFormatter(logging.Formatter):
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
-    def __init__(self, fields):
+    def __init__(self, fields: List[str]):
         """ make a constructor, it updates the class to accept a list of
         strings fields constructor argument"""
         super(RedactingFormatter, self).__init__(self.FORMAT)
