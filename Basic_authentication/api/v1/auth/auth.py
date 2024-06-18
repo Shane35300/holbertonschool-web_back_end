@@ -13,8 +13,31 @@ class Auth:
     API endpoints.
     """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """ Returns False - path and excluded_paths will be used later """
-        return False
+        """
+        Determines if a given path requires authentication.
+
+        Args:
+            path (str): The path to check.
+            excluded_paths (List[str]): A list of paths that do not require
+            authentication.
+
+        Returns:
+            bool: True if the path is not in the excluded_paths list, False
+            otherwise.
+        """
+        if path is None:
+            return True
+        if not excluded_paths or excluded_paths is None:
+            return True
+
+        # Add slash if not present
+        if not path.endswith('/'):
+            path += '/'
+
+        for excluded_path in excluded_paths:
+            if path == excluded_path:
+                return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """ Returns None - request will be the Flask request object """
