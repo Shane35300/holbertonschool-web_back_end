@@ -80,3 +80,22 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         host=host,
         database=db_name
     )
+
+
+def main() -> None:
+    """Main function to fetch and display user data."""
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM users;")
+
+    logger = get_logger()
+    for row in cursor:
+        message = '; '.join([f"{key}={value}" for key, value in row.items()])
+        logger.info(message)
+
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
