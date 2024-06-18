@@ -63,6 +63,7 @@ def get_logger() -> logging.Logger:
 
     return logger
 
+
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """
     Return a MySQL database connection object using credentials
