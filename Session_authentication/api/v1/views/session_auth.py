@@ -60,4 +60,3 @@ def handles_all_routes() -> str:
         session_name = os.getenv('SESSION_NAME')
         response.set_cookie(session_name, session_id)
         return response
-
