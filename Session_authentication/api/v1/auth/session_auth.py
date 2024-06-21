@@ -39,13 +39,15 @@ class SessionAuth(Auth):
 
     def current_user(self, request=None):
         """
-        Return a User instance based on a cookie value _my_session_id in the request.
+        Return a User instance based on a cookie value _my_session_id in the
+        request.
 
         Args:
             request: Flask request object
 
         Returns:
-            User instance if session ID is valid and corresponds to a user, None otherwise
+            User instance if session ID is valid and corresponds to a user,
+            None otherwise
         """
         if request is None:
             return None
