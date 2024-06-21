@@ -62,7 +62,17 @@ class SessionAuth(Auth):
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def handles_all_routes() -> str:
-    """ view that handles all routes for the Session authentication
+    """
+    Handles the login route for session authentication.
+
+    This view retrieves email and password from the POST request,
+    validates them, and creates a session ID if the credentials are correct.
+
+    Returns:
+        - JSON response with user details and sets a session cookie if
+        successful.
+        - JSON error message and appropriate HTTP status code if there are
+        errors.
     """
     email = request.form.get('email')
     if email is None or email == "":
