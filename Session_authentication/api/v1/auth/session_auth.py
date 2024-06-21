@@ -61,7 +61,7 @@ class SessionAuth(Auth):
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
-def handles_all_routes():
+def handles_all_routes() -> str:
     """ view that handles all routes for the Session authentication
     """
     email = request.form.get('email')
