@@ -5,6 +5,7 @@ Auth class to manage API authentication.
 
 from flask import request
 from typing import List, TypeVar
+import os
 
 
 class Auth:
@@ -12,6 +13,15 @@ class Auth:
     This class provides methods to handle authentication and authorization for
     API endpoints.
     """
+    def session_cookie(self, request=None):
+        """Return the value of the session cookie from the request."""
+        if request is None:
+            return None
+        cookie_name = os.getenv('SESSION_NAME')
+        if cookie_name is None:
+            return None
+        return request.cookies.get(cookie_name)
+
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
         Determines if a given path requires authentication.
