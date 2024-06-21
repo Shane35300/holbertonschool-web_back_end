@@ -8,7 +8,7 @@ from models.user import User
 import uuid
 import os
 from api.v1.views import app_views
-from flask import request, jsonify
+from flask import request, jsonify, abort
 
 
 class SessionAuth(Auth):
@@ -18,6 +18,22 @@ class SessionAuth(Auth):
     validate the “switch” by using environment variables
     """
     user_id_by_session_id = {}
+
+    def destroy_session(self, request=None):
+        """
+        method def destroy_session(self, request=None): that deletes
+        the user session / logout
+        """
+        if request is None:
+            return False
+        session_id = self.session_cookie(request)
+        if session_id is None:
+            return False
+        user_id = self.user_id_for_session_id(session_id)
+        if user_id is None:
+            return False
+        del self.user_id_by_session_id[session_id]
+        return True
 
     def create_session(self, user_id: str = None) -> str:
         """
@@ -58,6 +74,24 @@ class SessionAuth(Auth):
         user_id = self.user_id_for_session_id(session_id)
         user = User.get(user_id)
         return user
+
+
+@app_views.route('/auth_session/logout', methods=['DELETE'],
+                 strict_slashes=False)
+def logout() -> str:
+    """
+    Handles user logout by destroying the session.
+
+    Returns:
+        - JSON empty dictionary with status code 200 if successful
+        - 404 error if logout fails
+    """
+    from api.v1.app import auth
+
+    if not auth.destroy_session(request):
+        abort(404)
+
+    return jsonify({}), 200
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
