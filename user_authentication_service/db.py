@@ -38,4 +38,3 @@ class DB:
         session.add(user)
         session.commit()
         return user
-
