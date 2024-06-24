@@ -11,6 +11,7 @@ Base = declarative_base()
 
 
 class User(Base):
+    """Class User, to create instances of user"""
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     email = Column(String(250), nullable=False)
