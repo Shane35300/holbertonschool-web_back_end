@@ -60,7 +60,8 @@ class DB:
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """
-        method that takes as argument a required user_id integer and arbitrary keyword arguments, and returns None
+        method that takes as argument a required user_id integer and arbitrary
+        keyword arguments, and returns None
         """
         session = self._session
         try:
