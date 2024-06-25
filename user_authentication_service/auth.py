@@ -19,6 +19,21 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
+    def update_password(self, reset_token: str, password: str) -> None:
+        """
+        find the corresponding user. If it does not exist, raise a
+        ValueError exception.
+        """
+        try:
+            user = self._db.find_user_by(reset_token=reset_token)
+            new_pwd = _hash_password(password)
+            self._db.update_user(user.id, hashed_password=new_pwd,
+                                 reset_token=None)
+        except NoResultFound:
+            raise ValueError
+        except InvalidRequestError:
+            raise ValueError
+
     def get_reset_password_token(self, email: str) -> str:
         """
         take an email string argument and returns a string.
