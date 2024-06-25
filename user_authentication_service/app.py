@@ -69,7 +69,7 @@ def logout() -> Response:
         else:
             abort(403)
     else:
-        abort(403)
+        return None
 
 
 if __name__ == "__main__":
