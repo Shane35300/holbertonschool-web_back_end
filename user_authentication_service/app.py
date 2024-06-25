@@ -38,7 +38,7 @@ def user() -> Response:
 @app.route("/sessions", methods=["POST"], strict_slashes=False)
 def login() -> Response:
     """
-    This method is made for the login step
+    This method is made for the login step. It returns a response
     """
     email = request.form.get('email')
     pwd = request.form.get('password')
