@@ -32,7 +32,6 @@ class Auth:
         except NoResultFound:
             return False
 
-
     def register_user(self, email: str, password: str) -> User:
         """
         This method takes mandatory email and password string arguments and
