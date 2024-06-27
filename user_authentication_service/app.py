@@ -65,7 +65,7 @@ def logout() -> Response:
         user = AUTH.get_user_from_session_id(session_id)
         if user:
             AUTH.destroy_session(user.id)
-            return jsonify({"Location": "/"}), 200
+            return redirect(url_for('hello_world')), 302
         else:
             abort(403)
     else:
