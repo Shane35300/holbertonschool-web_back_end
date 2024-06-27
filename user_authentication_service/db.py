@@ -33,15 +33,16 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email: str, hashed: str) -> User:
+    def add_user(self, email: str, hashed_password: str) -> User:
         """Add a user to the database
         """
-        user = User(email=email, hashed_password=hashed)
-        session = self._session
-        session.add(user)
-        session.commit()
-        return user
-
+        if email and hashed_password:
+            user = User(email=email, hashed_password=hashed_password)
+            session = self._session
+            session.add(user)
+            session.commit()
+            return user
+        return None
 
     def find_user_by(self, **kwargs) -> User:
         """
