@@ -51,6 +51,8 @@ def login() -> Response:
             return response, 200
         else:
             abort(401)
+    else:
+        abort(401)
 
 
 @app.route("/sessions", methods=["DELETE"], strict_slashes=False)
@@ -66,8 +68,6 @@ def logout() -> Response:
             return redirect(url_for('hello_world')), 302
         else:
             abort(403)
-    else:
-        abort(403)
 
 
 @app.route("/profile", methods=["GET"], strict_slashes=False)
