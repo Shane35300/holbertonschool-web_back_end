@@ -26,7 +26,7 @@ class Auth:
         """
         try:
             user = self._db.find_user_by(reset_token=reset_token)
-            new_pwd = _hash_password(password)
+            new_pwd = _hash_password(password).decode('utf-8')
             self._db.update_user(user.id, hashed_password=new_pwd,
                                  reset_token=None)
         except NoResultFound:
