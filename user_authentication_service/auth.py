@@ -19,7 +19,7 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
-    def update_password(self, reset_token: str, password: str) -> None:
+    def update_password(self, reset_token: str, password: str):
         """
         find the corresponding user. If it does not exist, raise a
         ValueError exception.
