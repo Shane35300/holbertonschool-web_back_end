@@ -47,31 +47,38 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
+    """
+    TestMemoize(unittest.TestCase) class with a test_memoize method.
+    """
 
     def test_memoize(self):
-        # Définir la classe de test
+        """# Définir la classe de test"""
         class TestClass:
+            """TestMemoize(unittest.TestCase) class with a test_memoize method
+            """
             def a_method(self):
+                """
+                a method
+                """
                 return 42
 
             @memoize
             def a_property(self):
+                """
+                a_property
+                """
                 return self.a_method()
 
         # Utiliser patch pour simuler a_method
         with patch.object(TestClass, 'a_method', return_value=42
                           ) as mock_a_method:
-            # Créer une instance de TestClass
             obj = TestClass()
 
-            # Appeler a_property deux fois
             result1 = obj.a_property
             result2 = obj.a_property
 
-            # Vérifier que a_method a été appelé une seule fois
             mock_a_method.assert_called_once()
 
-            # Vérifier que les résultats sont corrects
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
 
