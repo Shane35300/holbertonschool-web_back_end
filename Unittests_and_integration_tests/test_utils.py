@@ -2,7 +2,9 @@
 import unittest
 from parameterized import parameterized
 from unittest.mock import patch, Mock
+from typing import List, Dict
 from utils import access_nested_map, get_json, memoize
+from client import GithubOrgClient
 
 
 class TestAccessNestedMap(unittest.TestCase):
