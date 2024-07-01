@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 from client import GithubOrgClient
 
@@ -39,6 +39,26 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result["name"], org_name)
         self.assertEqual(result["repos_url"],
                          f"https://api.github.com/orgs/{org_name}/repos")
+
+    def test_public_repos_url(self):
+        # Définir la charge utile attendue
+        expected_repos_url = "https://api.github.com/orgs/testorg/repos"
+
+        # Remplacer la propriété org de la classe GithubOrgClient par un mock
+        with patch.object(GithubOrgClient, 'org', new_callable=PropertyMock
+                          ) as mock_org:
+            mock_org.return_value = {
+                "repos_url": expected_repos_url
+            }
+
+            # Créer une instance réelle de GithubOrgClient
+            client = GithubOrgClient("testorg")
+
+            # Accéder à la propriété _public_repos_url
+            actual_repos_url = client._public_repos_url
+
+            # Vérifier que la valeur retournée correspond à celle attendue
+            self.assertEqual(actual_repos_url, expected_repos_url)
 
 
 if __name__ == '__main__':
