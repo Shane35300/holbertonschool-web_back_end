@@ -25,6 +25,9 @@ def get_locale() -> str:
     """
     Determine the best match with our supported languages
     """
+    forced_locale = request.args.get('locale')
+    if forced_locale and forced_locale in app.config['LANGUAGES']:
+        return forced_locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 

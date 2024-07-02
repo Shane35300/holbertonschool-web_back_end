@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
-#, fuzzy
+# fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
@@ -24,4 +24,3 @@ msgstr ""
 #: templates/3-index.html:9
 msgid "home_header"
 msgstr ""
-
