@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic Flask app
+Basic Flask app, All your functions and coroutines must be type-annotated
 """
 from flask import Flask, render_template, request, g
 from typing import Any
