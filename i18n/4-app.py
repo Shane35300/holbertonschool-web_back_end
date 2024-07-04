@@ -41,7 +41,7 @@ def hello_world() -> Any:
     """
     title = gettext("home_title")
     header = gettext("home_header")
-    return render_template('3-index.html', title=title, header=header)
+    return render_template('4-index.html', title=title, header=header)
 
 
 if __name__ == "__main__":
