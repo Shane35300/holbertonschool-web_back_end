@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic Flask app
+Basic Flask app, All your functions and coroutines must be type-annotated
 """
 from flask import Flask, render_template
 from typing import Any
@@ -14,7 +14,3 @@ def hello_world() -> Any:
     Home page  with "Hello world" as header
     """
     return render_template('0-index.html')
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
