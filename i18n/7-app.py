@@ -95,7 +95,7 @@ babel = Babel(app, locale_selector=get_locale, timezone_selector=get_timezone)
 @app.route("/", strict_slashes=False)
 def hello_world() -> Any:
     """
-    Home page  with "Hello world" as header
+    Home page with "Hello world" as header
     """
     user = getattr(g, 'user', None)
     message = gettext("not_logged_in")
