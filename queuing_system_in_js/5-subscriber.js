@@ -19,4 +19,9 @@ subscriber.on('message', (channel, msg) => {
 	if (channel === channelName) {
 		console.log(msg);
 	}
+	if (msg === 'KILL_SERVER') {
+		subscriber.unsubscribe(channelName, () => {
+			subscriber.quit();
+		});
+	}
 })
