@@ -24,16 +24,19 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable[[bytes], any]] = None) -> Optional[any]:
+    def get(self, key: str,
+            fn: Optional[Callable[[bytes], any]] = None) -> Optional[any]:
         """
         Retrieve data from Redis and apply the optional conversion function.
 
         Args:
             key (str): The key to retrieve data for.
-            fn (Optional[Callable[[bytes], any]]): The function to convert the data.
+            fn (Optional[Callable[[bytes], any]]): The function to convert the
+            data.
 
         Returns:
-            Optional[any]: The retrieved and converted data, or None if key does not exist.
+            Optional[any]: The retrieved and converted data, or None if key
+            does not exist.
         """
         data = self._redis.get(key)
         if data is None:
@@ -50,7 +53,8 @@ class Cache:
             key (str): The key to retrieve data for.
 
         Returns:
-            Optional[str]: The retrieved string data, or None if key does not exist.
+            Optional[str]: The retrieved string data, or None if key does
+            not exist.
         """
         return self.get(key, fn=lambda x: x.decode("utf-8"))
 
@@ -62,6 +66,7 @@ class Cache:
             key (str): The key to retrieve data for.
 
         Returns:
-            Optional[int]: The retrieved integer data, or None if key does not exist.
+            Optional[int]: The retrieved integer data, or None if key does
+            not exist.
         """
         return self.get(key, fn=int)
