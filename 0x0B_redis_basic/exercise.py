@@ -2,6 +2,7 @@ import redis
 import uuid
 from typing import Union
 
+
 class Cache:
     def __init__(self):
         """Initializes the Cache instance and flushes the Redis database."""
@@ -13,7 +14,8 @@ class Cache:
         Store the data in Redis using a random key.
 
         Args:
-            data: Data to store in Redis. It can be a string, bytes, int or float.
+            data: Data to store in Redis. It can be a string, bytes,
+            int or float.
 
         Returns:
             str: The key under which the data is stored.
