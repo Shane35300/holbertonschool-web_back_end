@@ -1,3 +1,4 @@
+-- Creation du déclencheur
 DELIMITER //
 
 CREATE TRIGGER decrease_quantity
